@@ -31,6 +31,14 @@ NEXT_PUBLIC_APP_NAME=IPT One Telecoms
 NEXT_PUBLIC_APP_URL=http://localhost:3000
 ```
 
+For Coolify deployment, set these environment variables in your Coolify project settings:
+
+- `DATABASE_URL`: Your PostgreSQL database connection string (must include SSL parameters for Neon)
+- `JWT_SECRET`: A secure JWT secret key (use a long random string)
+- `NEXT_PUBLIC_APP_NAME`: "IPT One Telecoms"
+- `NEXT_PUBLIC_APP_URL`: Your Coolify deployment URL (e.g., `https://your-app.coolify.io`)
+- `NODE_ENV`: production
+
 ## Deploy on Coolify
 
 1. Push your code to a Git repository (GitHub, GitLab, etc.)
