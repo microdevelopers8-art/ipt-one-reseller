@@ -5,11 +5,6 @@ export const metadata: Metadata = {
   title: "IPT One Telecoms | Reseller Portal",
   description: "IPT One Telecoms South Africa - Reseller Management Portal for Fibre, VOIP, Cloud, and Hardware Services",
   keywords: "IPT One, Telecoms, Reseller, Fibre, VOIP, South Africa",
-  icons: {
-    icon: "/favicon.png",
-    shortcut: "/favicon.png",
-    apple: "/favicon.png",
-  },
 };
 
 export default function RootLayout({
@@ -19,6 +14,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/logo.png" />
+      </head>
       <body>{children}</body>
     </html>
   );
