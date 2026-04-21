@@ -8,15 +8,17 @@ function RichTextEditor({ value, onChange }: { value: string, onChange: (val: st
   const handleCommand = (cmd: string, val?: string) => { document.execCommand(cmd, false, val); };
   return (
     <div className="rich-editor-container" style={{ border: '1px solid var(--border-subtle)', borderRadius: '10px', overflow: 'hidden', background: 'var(--bg-main)' }}>
-      <div className="rich-editor-toolbar" style={{ padding: '8px', borderBottom: '1px solid var(--border-subtle)', display: 'flex', gap: '4px', background: 'var(--bg-elevated)' }}>
+      <div className="rich-editor-toolbar" style={{ padding: '12px 16px', borderBottom: '1px solid var(--border-subtle)', display: 'flex', gap: '8px', background: 'var(--bg-elevated)', flexWrap: 'wrap', alignItems: 'center' }}>
         <button type="button" onClick={() => handleCommand('bold')} className="btn-rich" title="Bold"><b>B</b></button>
         <button type="button" onClick={() => handleCommand('italic')} className="btn-rich" title="Italic"><i>I</i></button>
-        <button type="button" onClick={() => handleCommand('insertUnorderedList')} className="btn-rich">• List</button>
-        <button type="button" onClick={() => handleCommand('insertOrderedList')} className="btn-rich">1. List</button>
-        <button type="button" onClick={() => handleCommand('formatBlock', 'h3')} className="btn-rich">H</button>
+        <div style={{ width: '1px', height: '20px', background: 'var(--border-subtle)', margin: '0 4px' }}></div>
+        <button type="button" onClick={() => handleCommand('insertUnorderedList')} className="btn-rich" title="Bullet List">• List</button>
+        <button type="button" onClick={() => handleCommand('insertOrderedList')} className="btn-rich" title="Numbered List">1. List</button>
+        <div style={{ width: '1px', height: '20px', background: 'var(--border-subtle)', margin: '0 4px' }}></div>
+        <button type="button" onClick={() => handleCommand('formatBlock', 'h3')} className="btn-rich" title="Heading">H3</button>
       </div>
-      <div contentEditable onInput={(e: any) => onChange(e.target.innerHTML)} dangerouslySetInnerHTML={{ __html: value }} style={{ minHeight: '180px', padding: '16px', outline: 'none', color: 'var(--text-primary)', fontSize: '14px', lineHeight: '1.6' }} />
-      <style dangerouslySetInnerHTML={{__html: `.btn-rich { width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; background: var(--bg-main); border: 1px solid var(--border-subtle); border-radius: 4px; cursor: pointer; color: var(--text-secondary); font-size: 13px; } .btn-rich:hover { color: var(--brand-primary); }`}} />
+      <div contentEditable onInput={(e: any) => onChange(e.target.innerHTML)} dangerouslySetInnerHTML={{ __html: value }} style={{ minHeight: '200px', padding: '16px', outline: 'none', color: 'var(--text-primary)', fontSize: '14px', lineHeight: '1.6' }} />
+      <style dangerouslySetInnerHTML={{__html: `.btn-rich { min-width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; background: var(--bg-main); border: 1px solid var(--border-subtle); border-radius: 6px; cursor: pointer; color: var(--text-secondary); font-size: 13px; font-weight: 500; transition: all 0.2s; } .btn-rich:hover { color: var(--primary); background: var(--bg-hover); border-color: var(--primary); }`}} />
     </div>
   );
 }
@@ -176,68 +178,123 @@ export default function AdminProducts() {
             </div>
             <form onSubmit={handleSave}>
               <div className="modal-body">
-                 <div style={{ display: 'flex', gap: '40px' }}>
-                    <div style={{ flex: 1 }} className="space-y-6">
+                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 280px', gap: '28px', alignItems: 'start' }} >
+                    {/* MAIN FORM SECTION */}
+                    <div className="space-y-6">
                        {/* GENERAL INFO */}
-                       <div className="grid-2 gap-4">
-                          <div className="form-group"><label className="form-label font-bold">Item Identity (Name) *</label><input className="form-input" required value={editingProduct.name || ''} onChange={e => setEditingProduct({...editingProduct, name: e.target.value})} /></div>
-                          <div className="form-group"><label className="form-label font-bold">SKU / Stock ID</label><input className="form-input font-mono" value={editingProduct.sku || ''} onChange={e => setEditingProduct({...editingProduct, sku: e.target.value})} /></div>
+                       <div>
+                          <h5 className="font-semibold text-sm text-secondary uppercase tracking-wide mb-4">📋 Basic Information</h5>
+                          <div className="grid-2 gap-4">
+                             <div className="form-group"><label className="form-label">Item Name *</label><input className="form-input" required value={editingProduct.name || ''} onChange={e => setEditingProduct({...editingProduct, name: e.target.value})} /></div>
+                             <div className="form-group"><label className="form-label">SKU / Stock ID</label><input className="form-input font-mono" value={editingProduct.sku || ''} onChange={e => setEditingProduct({...editingProduct, sku: e.target.value})} /></div>
+                          </div>
                        </div>
 
                        {/* CATALOG & CATEGORIES */}
-                       <div className="grid-3 gap-4">
-                          <div className="form-group">
-                            <label className="form-label font-bold">Hardware Catalog *</label>
-                            <select className="form-select" required value={editingProduct.catalog_id || ''} onChange={e => setEditingProduct({...editingProduct, catalog_id: e.target.value, category_id: ''})}>
-                              <option value="">Select Hardware Type</option>
-                              {catalogs.map((c: any) => <option key={c.id} value={c.id}>{c.name}</option>)}
-                            </select>
-                          </div>
-                          <div className="form-group">
-                            <label className="form-label font-bold">Primary Category</label>
-                            <select className="form-select" value={parentCategoryId || ''} onChange={e => { setParentCategoryId(e.target.value); setEditingProduct({...editingProduct, category_id: e.target.value}); }}>
-                              <option value="">UNCATEGORIZED</option>
-                              {categories.filter((c: any) => !c.parent_id).map((c: any) => <option key={c.id} value={c.id}>{c.name}</option>)}
-                            </select>
-                          </div>
-                          <div className="form-group">
-                            <label className="form-label font-bold">Sub-Category</label>
-                            <select className="form-select" disabled={!parentCategoryId} value={(editingProduct.category_id !== parentCategoryId ? editingProduct.category_id : '') || ''} onChange={e => setEditingProduct({...editingProduct, category_id: e.target.value || parentCategoryId})}>
-                              <option value="">NONE</option>
-                              {categories.filter((c: any) => c.parent_id === parentCategoryId).map((c: any) => <option key={c.id} value={c.id}>{c.name}</option>)}
-                            </select>
+                       <div>
+                          <h5 className="font-semibold text-sm text-secondary uppercase tracking-wide mb-4">🏷️ Classification</h5>
+                          <div className="grid-3 gap-4">
+                             <div className="form-group">
+                               <label className="form-label">Hardware Catalog *</label>
+                               <select className="form-input" required value={editingProduct.catalog_id || ''} onChange={e => setEditingProduct({...editingProduct, catalog_id: e.target.value, category_id: ''})}>
+                                 <option value="">Select Type</option>
+                                 {catalogs.map((c: any) => <option key={c.id} value={c.id}>{c.name}</option>)}
+                               </select>
+                             </div>
+                             <div className="form-group">
+                               <label className="form-label">Primary Category</label>
+                               <select className="form-input" value={parentCategoryId || ''} onChange={e => { setParentCategoryId(e.target.value); setEditingProduct({...editingProduct, category_id: e.target.value}); }}>
+                                 <option value="">Uncategorized</option>
+                                 {categories.filter((c: any) => !c.parent_id).map((c: any) => <option key={c.id} value={c.id}>{c.name}</option>)}
+                               </select>
+                             </div>
+                             <div className="form-group">
+                               <label className="form-label">Sub-Category</label>
+                               <select className="form-input" disabled={!parentCategoryId} value={(editingProduct.category_id !== parentCategoryId ? editingProduct.category_id : '') || ''} onChange={e => setEditingProduct({...editingProduct, category_id: e.target.value || parentCategoryId})}>
+                                 <option value="">None</option>
+                                 {categories.filter((c: any) => c.parent_id === parentCategoryId).map((c: any) => <option key={c.id} value={c.id}>{c.name}</option>)}
+                               </select>
+                             </div>
                           </div>
                        </div>
 
                        {/* PRICING MATRIX */}
-                       <div className="grid-3" style={{ background: 'var(--bg-elevated)', padding: '24px', borderRadius: '12px', border: '1px solid var(--border-subtle)' }}>
-                          <div className="form-group"><label className="form-label font-bold text-xs uppercase text-muted">Cost Price (R)</label><input className="form-input font-mono" type="number" step="0.01" value={editingProduct.cost_price ?? 0} onChange={e => setEditingProduct({...editingProduct, cost_price: parseFloat(e.target.value) || 0})} /></div>
-                          <div className="form-group"><label className="form-label font-bold text-xs uppercase text-brand">Reseller Price (R) *</label><input className="form-input font-bold" type="number" step="0.01" value={editingProduct.reseller_price ?? 0} onChange={e => setEditingProduct({...editingProduct, reseller_price: parseFloat(e.target.value) || 0})} required /></div>
-                          <div className="form-group"><label className="form-label font-bold text-xs uppercase text-primary">Retail Price (R) *</label><input className="form-input font-bold" type="number" step="0.01" value={editingProduct.price ?? 0} onChange={e => setEditingProduct({...editingProduct, price: parseFloat(e.target.value) || 0})} required /></div>
+                       <div>
+                          <h5 className="font-semibold text-sm text-secondary uppercase tracking-wide mb-4">💰 Pricing</h5>
+                          <div className="grid_3 gap-4" style={{ background: 'var(--bg-elevated)', padding: '16px', borderRadius: '12px', border: '1px solid var(--border-subtle)', display: 'grid', gridTemplateColumns: '1fr 1fr 1fr' }}>
+                             <div className="form-group">
+                                <label className="form-label text-xs uppercase">Cost Price (R)</label>
+                                <input className="form-input font-mono" type="number" step="0.01" value={editingProduct.cost_price ?? 0} onChange={e => setEditingProduct({...editingProduct, cost_price: parseFloat(e.target.value) || 0})} />
+                             </div>
+                             <div className="form-group">
+                                <label className="form-label text-xs uppercase" style={{ color: 'var(--brand-primary)' }}>Reseller Price (R) *</label>
+                                <input className="form-input font-bold" type="number" step="0.01" value={editingProduct.reseller_price ?? 0} onChange={e => setEditingProduct({...editingProduct, reseller_price: parseFloat(e.target.value) || 0})} required />
+                             </div>
+                             <div className="form-group">
+                                <label className="form-label text-xs uppercase" style={{ color: 'var(--primary)' }}>Retail Price (R) *</label>
+                                <input className="form-input font-bold" type="number" step="0.01" value={editingProduct.price ?? 0} onChange={e => setEditingProduct({...editingProduct, price: parseFloat(e.target.value) || 0})} required />
+                             </div>
+                          </div>
                        </div>
 
                        {/* DESCRIPTION */}
-                       <div className="form-group">
-                          <label className="form-label font-bold">Technical Specifications & Rich Content</label>
+                       <div>
+                          <h5 className="font-semibold text-sm text-secondary uppercase tracking-wide mb-4">📝 Specifications</h5>
                           <RichTextEditor value={editingProduct.description || ''} onChange={val => setEditingProduct({...editingProduct, description: val})} />
                        </div>
                     </div>
 
-                    {/* MEDIA BAR */}
-                    <div style={{ width: '280px', borderLeft: '1px solid var(--border-subtle)', paddingLeft: '32px' }}>
-                       <h4 className="text-xs uppercase font-bold text-muted mb-6">Equipment Visuals (3 MAX)</h4>
-                       <div className="space-y-4">
+                    {/* MEDIA SIDEBAR */}
+                    <div style={{ background: 'var(--bg-elevated)', padding: '16px', borderRadius: '12px', border: '1px solid var(--border-subtle)', height: 'fit-content', position: 'sticky', top: '20px' }}>
+                       <h5 className="text-xs uppercase font-bold text-secondary mb-3">📸 Photos (Max 3)</h5>
+                       <div className="space-y-2">
                           {[0, 1, 2].map(idx => (
-                            <div key={idx} style={{ height: '140px', background: 'var(--bg-elevated)', borderRadius: '12px', border: '2px dashed var(--border-subtle)', overflow: 'hidden', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                            <div key={idx} style={{ 
+                              height: '100px', 
+                              background: 'var(--bg-main)', 
+                              borderRadius: '8px', 
+                              border: '2px dashed var(--border-subtle)', 
+                              overflow: 'hidden', 
+                              position: 'relative', 
+                              display: 'flex', 
+                              alignItems: 'center', 
+                              justifyContent: 'center',
+                              transition: 'all 0.2s'
+                            }}>
                                {editingProduct.images?.[idx] ? (
                                  <>
                                    <img src={editingProduct.images[idx]} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                                   <button type="button" onClick={() => { const next = [...editingProduct.images]; next.splice(idx, 1); setEditingProduct({...editingProduct, images: next}); }} style={{ position: 'absolute', top: '8px', right: '8px', background: 'rgba(0,0,0,0.5)', color: 'white', border: 'none', borderRadius: '50%', width: '24px', height: '24px' }}>×</button>
+                                   <button 
+                                     type="button" 
+                                     onClick={() => { 
+                                       const next = [...editingProduct.images]; 
+                                       next.splice(idx, 1); 
+                                       setEditingProduct({...editingProduct, images: next}); 
+                                     }} 
+                                     style={{ 
+                                       position: 'absolute', 
+                                       top: '2px', 
+                                       right: '2px', 
+                                       background: 'rgba(0,0,0,0.6)', 
+                                       color: 'white', 
+                                       border: 'none', 
+                                       borderRadius: '50%', 
+                                       width: '24px', 
+                                       height: '24px',
+                                       cursor: 'pointer',
+                                       fontSize: '14px',
+                                       display: 'flex',
+                                       alignItems: 'center',
+                                       justifyContent: 'center',
+                                       padding: '0',
+                                       lineHeight: '1'
+                                     }}
+                                   >×</button>
                                  </>
                                ) : (
-                                 <label style={{ cursor: 'pointer', textAlign: 'center' }}>
-                                    <span style={{ fontSize: '24px', opacity: 0.5 }}>📸</span>
-                                    <div className="text-xs mt-1 text-muted">Upload Photo</div>
+                                 <label style={{ cursor: 'pointer', textAlign: 'center', width: '100%', height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '8px' }}>
+                                    <span style={{ fontSize: '24px', opacity: 0.4, lineHeight: '1' }}>📷</span>
+                                    <div style={{ fontSize: '10px', marginTop: '2px', color: 'var(--text-secondary)', opacity: 0.5 }}>Click to upload</div>
                                     <input type="file" hidden accept="image/*" onChange={e => handleImageUpload(e, idx)} />
                                  </label>
                                )}

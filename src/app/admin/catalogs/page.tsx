@@ -128,15 +128,92 @@ export default function CatalogsPage() {
                 style={{ cursor: 'grab' }}
               >
                 <div className="catalog-icon" style={{ backgroundColor: `${cat.color}20`, color: cat.color }}>
-                  {cat.icon === 'box' ? '📦' : 
-                   cat.icon === 'wifi' ? '📶' : 
-                   cat.icon === 'phone' ? '📞' : 
-                   cat.icon === 'cloud' ? '☁️' : 
-                   cat.icon === 'server' ? '🖥️' : 
-                   cat.icon === 'security' ? '🔒' : 
-                   cat.icon === 'mobile' ? '📱' : 
-                   cat.icon === 'chart' ? '📊' : 
-                   cat.icon === 'globe' ? '🌐' : 
+                  {cat.icon === 'folder' ? '📁' :
+                   cat.icon === 'box' ? '📦' :
+                   cat.icon === 'package' ? '📦' :
+                   cat.icon === 'wifi' ? '📶' :
+                   cat.icon === 'antenna' ? '📡' :
+                   cat.icon === 'satellite' ? '🛰️' :
+                   cat.icon === 'router' ? '📡' :
+                   cat.icon === 'network' ? '🌐' :
+                   cat.icon === 'cable' ? '🔌' :
+                   cat.icon === 'radio' ? '📻' :
+                   cat.icon === 'phone' ? '📞' :
+                   cat.icon === 'mobile' ? '📱' :
+                   cat.icon === 'call' ? '📞' :
+                   cat.icon === 'message' ? '💬' :
+                   cat.icon === 'video' ? '📹' :
+                   cat.icon === 'microphone' ? '🎤' :
+                   cat.icon === 'server' ? '🖥️' :
+                   cat.icon === 'computer' ? '💻' :
+                   cat.icon === 'laptop' ? '💻' :
+                   cat.icon === 'desktop' ? '🖥️' :
+                   cat.icon === 'monitor' ? '🖥️' :
+                   cat.icon === 'keyboard' ? '⌨️' :
+                   cat.icon === 'mouse' ? '🖱️' :
+                   cat.icon === 'printer' ? '🖨️' :
+                   cat.icon === 'storage' ? '💾' :
+                   cat.icon === 'memory' ? '🧠' :
+                   cat.icon === 'cloud' ? '☁️' :
+                   cat.icon === 'database' ? '🗄️' :
+                   cat.icon === 'code' ? '💻' :
+                   cat.icon === 'app' ? '📱' :
+                   cat.icon === 'api' ? '🔗' :
+                   cat.icon === 'automation' ? '🤖' :
+                   cat.icon === 'security' ? '🔒' :
+                   cat.icon === 'shield' ? '🛡️' :
+                   cat.icon === 'lock' ? '🔐' :
+                   cat.icon === 'key' ? '🔑' :
+                   cat.icon === 'certificate' ? '📜' :
+                   cat.icon === 'eye' ? '👁️' :
+                   cat.icon === 'chart' ? '📊' :
+                   cat.icon === 'graph' ? '📈' :
+                   cat.icon === 'trending' ? '📈' :
+                   cat.icon === 'money' ? '💰' :
+                   cat.icon === 'invoice' ? '📄' :
+                   cat.icon === 'calculator' ? '🧮' :
+                   cat.icon === 'globe' ? '🌐' :
+                   cat.icon === 'website' ? '🌐' :
+                   cat.icon === 'browser' ? '🌐' :
+                   cat.icon === 'email' ? '📧' :
+                   cat.icon === 'mail' ? '✉️' :
+                   cat.icon === 'tower' ? '🗼' :
+                   cat.icon === 'signal' ? '📶' :
+                   cat.icon === 'broadcast' ? '📢' :
+                   cat.icon === 'telecom' ? '📡' :
+                   cat.icon === 'voip' ? '📞' :
+                   cat.icon === 'conference' ? '👥' :
+                   cat.icon === 'support' ? '🆘' :
+                   cat.icon === 'wrench' ? '🔧' :
+                   cat.icon === 'settings' ? '⚙️' :
+                   cat.icon === 'tools' ? '🛠️' :
+                   cat.icon === 'checklist' ? '✅' :
+                   cat.icon === 'calendar' ? '📅' :
+                   cat.icon === 'battery' ? '🔋' :
+                   cat.icon === 'plug' ? '🔌' :
+                   cat.icon === 'lightning' ? '⚡' :
+                   cat.icon === 'generator' ? '⚡' :
+                   cat.icon === 'car' ? '🚗' :
+                   cat.icon === 'truck' ? '🚚' :
+                   cat.icon === 'plane' ? '✈️' :
+                   cat.icon === 'ship' ? '🚢' :
+                   cat.icon === 'tv' ? '📺' :
+                   cat.icon === 'movie' ? '🎬' :
+                   cat.icon === 'music' ? '🎵' :
+                   cat.icon === 'camera' ? '📷' :
+                   cat.icon === 'game' ? '🎮' :
+                   cat.icon === 'leaf' ? '🍃' :
+                   cat.icon === 'sun' ? '☀️' :
+                   cat.icon === 'water' ? '💧' :
+                   cat.icon === 'temperature' ? '🌡️' :
+                   cat.icon === 'star' ? '⭐' :
+                   cat.icon === 'diamond' ? '💎' :
+                   cat.icon === 'crown' ? '👑' :
+                   cat.icon === 'rocket' ? '🚀' :
+                   cat.icon === 'light' ? '💡' :
+                   cat.icon === 'target' ? '🎯' :
+                   cat.icon === 'puzzle' ? '🧩' :
+                   cat.icon === 'gear' ? '⚙️' :
                    '📁'}
                 </div>
                 <h3 style={{ fontSize: '18px', fontWeight: '700', marginBottom: '8px' }}>{cat.name}</h3>
@@ -181,7 +258,93 @@ export default function CatalogsPage() {
                       <td>
                         <div className="flex items-center gap-3">
                           <div style={{ width: '32px', height: '32px', borderRadius: '8px', backgroundColor: `${cat.color}20`, color: cat.color, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '16px' }}>
-                            {cat.icon === 'box' ? '📦' : cat.icon === 'wifi' ? '📶' : cat.icon === 'phone' ? '📞' : cat.icon === 'cloud' ? '☁️' : cat.icon === 'server' ? '🖥️' : cat.icon === 'security' ? '🔒' : cat.icon === 'mobile' ? '📱' : cat.icon === 'chart' ? '📊' : cat.icon === 'globe' ? '🌐' : '📁'}
+                            {cat.icon === 'folder' ? '📁' :
+                             cat.icon === 'box' ? '📦' :
+                             cat.icon === 'package' ? '📦' :
+                             cat.icon === 'wifi' ? '📶' :
+                             cat.icon === 'antenna' ? '📡' :
+                             cat.icon === 'satellite' ? '🛰️' :
+                             cat.icon === 'router' ? '📡' :
+                             cat.icon === 'network' ? '🌐' :
+                             cat.icon === 'cable' ? '🔌' :
+                             cat.icon === 'radio' ? '📻' :
+                             cat.icon === 'phone' ? '📞' :
+                             cat.icon === 'mobile' ? '📱' :
+                             cat.icon === 'call' ? '📞' :
+                             cat.icon === 'message' ? '💬' :
+                             cat.icon === 'video' ? '📹' :
+                             cat.icon === 'microphone' ? '🎤' :
+                             cat.icon === 'server' ? '🖥️' :
+                             cat.icon === 'computer' ? '💻' :
+                             cat.icon === 'laptop' ? '💻' :
+                             cat.icon === 'desktop' ? '🖥️' :
+                             cat.icon === 'monitor' ? '🖥️' :
+                             cat.icon === 'keyboard' ? '⌨️' :
+                             cat.icon === 'mouse' ? '🖱️' :
+                             cat.icon === 'printer' ? '🖨️' :
+                             cat.icon === 'storage' ? '💾' :
+                             cat.icon === 'memory' ? '🧠' :
+                             cat.icon === 'cloud' ? '☁️' :
+                             cat.icon === 'database' ? '🗄️' :
+                             cat.icon === 'code' ? '💻' :
+                             cat.icon === 'app' ? '📱' :
+                             cat.icon === 'api' ? '🔗' :
+                             cat.icon === 'automation' ? '🤖' :
+                             cat.icon === 'security' ? '🔒' :
+                             cat.icon === 'shield' ? '🛡️' :
+                             cat.icon === 'lock' ? '🔐' :
+                             cat.icon === 'key' ? '🔑' :
+                             cat.icon === 'certificate' ? '📜' :
+                             cat.icon === 'eye' ? '👁️' :
+                             cat.icon === 'chart' ? '📊' :
+                             cat.icon === 'graph' ? '📈' :
+                             cat.icon === 'trending' ? '📈' :
+                             cat.icon === 'money' ? '💰' :
+                             cat.icon === 'invoice' ? '📄' :
+                             cat.icon === 'calculator' ? '🧮' :
+                             cat.icon === 'globe' ? '🌐' :
+                             cat.icon === 'website' ? '🌐' :
+                             cat.icon === 'browser' ? '🌐' :
+                             cat.icon === 'email' ? '📧' :
+                             cat.icon === 'mail' ? '✉️' :
+                             cat.icon === 'tower' ? '🗼' :
+                             cat.icon === 'signal' ? '📶' :
+                             cat.icon === 'broadcast' ? '📢' :
+                             cat.icon === 'telecom' ? '📡' :
+                             cat.icon === 'voip' ? '📞' :
+                             cat.icon === 'conference' ? '👥' :
+                             cat.icon === 'support' ? '🆘' :
+                             cat.icon === 'wrench' ? '🔧' :
+                             cat.icon === 'settings' ? '⚙️' :
+                             cat.icon === 'tools' ? '🛠️' :
+                             cat.icon === 'checklist' ? '✅' :
+                             cat.icon === 'calendar' ? '📅' :
+                             cat.icon === 'battery' ? '🔋' :
+                             cat.icon === 'plug' ? '🔌' :
+                             cat.icon === 'lightning' ? '⚡' :
+                             cat.icon === 'generator' ? '⚡' :
+                             cat.icon === 'car' ? '🚗' :
+                             cat.icon === 'truck' ? '🚚' :
+                             cat.icon === 'plane' ? '✈️' :
+                             cat.icon === 'ship' ? '🚢' :
+                             cat.icon === 'tv' ? '📺' :
+                             cat.icon === 'movie' ? '🎬' :
+                             cat.icon === 'music' ? '🎵' :
+                             cat.icon === 'camera' ? '📷' :
+                             cat.icon === 'game' ? '🎮' :
+                             cat.icon === 'leaf' ? '🍃' :
+                             cat.icon === 'sun' ? '☀️' :
+                             cat.icon === 'water' ? '💧' :
+                             cat.icon === 'temperature' ? '🌡️' :
+                             cat.icon === 'star' ? '⭐' :
+                             cat.icon === 'diamond' ? '💎' :
+                             cat.icon === 'crown' ? '👑' :
+                             cat.icon === 'rocket' ? '🚀' :
+                             cat.icon === 'light' ? '💡' :
+                             cat.icon === 'target' ? '🎯' :
+                             cat.icon === 'puzzle' ? '🧩' :
+                             cat.icon === 'gear' ? '⚙️' :
+                             '📁'}
                           </div>
                           <span style={{ fontWeight: '600' }}>{cat.name}</span>
                         </div>
@@ -230,16 +393,121 @@ export default function CatalogsPage() {
                 <div className="form-group">
                   <label className="form-label">Icon</label>
                   <select className="form-select" value={editingCatalog.icon} onChange={e => setEditingCatalog({...editingCatalog, icon: e.target.value})}>
+                    {/* Default & General */}
                     <option value="folder">📁 Folder (Default)</option>
                     <option value="box">📦 Box / Hardware</option>
-                    <option value="wifi">📶 Wifi / Fibre</option>
+                    <option value="package">📦 Package / Bundle</option>
+
+                    {/* Internet & Connectivity */}
+                    <option value="wifi">📶 WiFi / Fibre</option>
+                    <option value="antenna">📡 Antenna / Signal</option>
+                    <option value="satellite">🛰️ Satellite</option>
+                    <option value="router">📡 Router / Modem</option>
+                    <option value="network">🌐 Network / LAN</option>
+                    <option value="cable">🔌 Cable / Ethernet</option>
+                    <option value="radio">📻 Radio / Wireless</option>
+
+                    {/* Communication */}
                     <option value="phone">📞 Phone / VOIP</option>
-                    <option value="cloud">☁️ Cloud Services</option>
+                    <option value="mobile">📱 Mobile / SIM</option>
+                    <option value="call">📞 Call Services</option>
+                    <option value="message">💬 Messaging / SMS</option>
+                    <option value="video">📹 Video Calling</option>
+                    <option value="microphone">🎤 Audio / Voice</option>
+
+                    {/* Computing & Hardware */}
                     <option value="server">🖥️ Server / Hosting</option>
+                    <option value="computer">💻 Computer / PC</option>
+                    <option value="laptop">💻 Laptop</option>
+                    <option value="desktop">🖥️ Desktop</option>
+                    <option value="monitor">🖥️ Monitor / Display</option>
+                    <option value="keyboard">⌨️ Keyboard</option>
+                    <option value="mouse">🖱️ Mouse</option>
+                    <option value="printer">🖨️ Printer</option>
+                    <option value="storage">💾 Storage / HDD</option>
+                    <option value="memory">🧠 Memory / RAM</option>
+
+                    {/* Cloud & Software */}
+                    <option value="cloud">☁️ Cloud Services</option>
+                    <option value="database">🗄️ Database</option>
+                    <option value="code">💻 Software / Code</option>
+                    <option value="app">📱 App / Application</option>
+                    <option value="api">🔗 API / Integration</option>
+                    <option value="automation">🤖 Automation</option>
+
+                    {/* Security */}
                     <option value="security">🔒 Security / VPN</option>
-                    <option value="mobile">📱 SIM / Mobile Data</option>
+                    <option value="shield">🛡️ Firewall / Protection</option>
+                    <option value="lock">🔐 Encryption</option>
+                    <option value="key">🔑 Access Control</option>
+                    <option value="certificate">📜 SSL / Certificate</option>
+                    <option value="eye">👁️ Monitoring</option>
+
+                    {/* Business & Analytics */}
                     <option value="chart">📊 Analytics / Reporting</option>
+                    <option value="graph">📈 Charts / Statistics</option>
+                    <option value="trending">📈 Trending / Growth</option>
+                    <option value="money">💰 Billing / Finance</option>
+                    <option value="invoice">📄 Invoice / Receipt</option>
+                    <option value="calculator">🧮 Calculator / Tools</option>
+
+                    {/* Web & Domains */}
                     <option value="globe">🌐 Web / Domains</option>
+                    <option value="website">🌐 Website / Hosting</option>
+                    <option value="browser">🌐 Browser / Web</option>
+                    <option value="email">📧 Email Services</option>
+                    <option value="mail">✉️ Mail / Communication</option>
+
+                    {/* Telecom Specific */}
+                    <option value="tower">🗼 Cell Tower</option>
+                    <option value="signal">📶 Signal Strength</option>
+                    <option value="broadcast">📢 Broadcasting</option>
+                    <option value="telecom">📡 Telecom Services</option>
+                    <option value="voip">📞 VoIP / SIP</option>
+                    <option value="conference">👥 Conference / Meeting</option>
+
+                    {/* Support & Services */}
+                    <option value="support">🆘 Support / Help</option>
+                    <option value="wrench">🔧 Maintenance</option>
+                    <option value="settings">⚙️ Configuration</option>
+                    <option value="tools">🛠️ Tools / Utilities</option>
+                    <option value="checklist">✅ Checklist / Tasks</option>
+                    <option value="calendar">📅 Scheduling</option>
+
+                    {/* Energy & Power */}
+                    <option value="battery">🔋 Battery / Power</option>
+                    <option value="plug">🔌 Power Supply</option>
+                    <option value="lightning">⚡ Electrical</option>
+                    <option value="generator">⚡ Generator / UPS</option>
+
+                    {/* Transportation & Mobility */}
+                    <option value="car">🚗 Vehicle / GPS</option>
+                    <option value="truck">🚚 Logistics</option>
+                    <option value="plane">✈️ Aviation</option>
+                    <option value="ship">🚢 Maritime</option>
+
+                    {/* Entertainment & Media */}
+                    <option value="tv">📺 TV / Streaming</option>
+                    <option value="movie">🎬 Media / Content</option>
+                    <option value="music">🎵 Audio / Music</option>
+                    <option value="camera">📷 Surveillance</option>
+                    <option value="game">🎮 Gaming</option>
+
+                    {/* Nature & Environment */}
+                    <option value="leaf">🍃 Green / Eco</option>
+                    <option value="sun">☀️ Solar / Renewable</option>
+                    <option value="water">💧 Water / Utilities</option>
+                    <option value="temperature">🌡️ Climate Control</option>
+
+                    {/* Symbols & Abstract */}
+                    <option value="star">⭐ Featured / Premium</option>
+                    <option value="diamond">💎 Premium / Luxury</option>
+                    <option value="crown">👑 Enterprise</option>
+                    <option value="rocket">🚀 Fast / Performance</option>
+                    <option value="light">💡 Innovation</option>
+                    <option value="target">🎯 Goals / Objectives</option>
+                    <option value="puzzle">🧩 Solutions</option>
+                    <option value="gear">⚙️ Advanced</option>
                   </select>
                 </div>
                 <div className="form-group">

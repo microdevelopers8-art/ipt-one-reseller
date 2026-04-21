@@ -23,11 +23,7 @@ export default function ResellerSidebar({ userName }: ResellerSidebarProps) {
   return (
     <aside className="sidebar reseller-sidebar">
       <div className="sidebar-logo">
-        <div className="sidebar-logo-icon" style={{ background: 'var(--info-bg)', color: 'var(--info)' }}>IPT</div>
-        <div className="sidebar-logo-text">
-          <h2>Partner Portal</h2>
-          <span className="text-xs opacity-50 font-bold uppercase tracking-wider">{userName.split(' ')[0]}'s Workspace</span>
-        </div>
+        <img src="/logo.png" alt="IPT One Telecoms Logo" className="sidebar-logo-img" />
       </div>
       <nav className="sidebar-nav">
         <div className="nav-section">

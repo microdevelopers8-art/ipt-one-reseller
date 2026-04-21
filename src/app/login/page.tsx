@@ -49,30 +49,29 @@ export default function LoginPage() {
   };
 
   return (
-    <div style={{ display: 'flex', minHeight: '100vh', width: '100%', background: 'var(--bg-main)' }}>
+    <div style={{ display: 'flex', minHeight: '100vh', width: '100%', background: 'linear-gradient(135deg, #0f1f2e 0%, #1a2d3e 100%)' }}>
       {/* Left Pane - Image Background */}
       <div style={{
-        flex: 1,
+        flex: 0.4,
         display: 'none',
         flexDirection: 'column',
         justifyContent: 'center',
         padding: '60px',
         backgroundColor: 'var(--brand-primary)',
-        backgroundImage: 'linear-gradient(135deg, rgba(0, 102, 204, 0.9) 0%, rgba(0, 163, 255, 0.8) 100%), url("https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=2070&auto=format&fit=crop")',
+        backgroundImage: 'linear-gradient(135deg, rgba(0, 102, 204, 0.9) 0%, rgba(0, 163, 255, 0.8) 100%), url("https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=2070&auto=format&fit=crop")',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         color: '#fff',
       }} className="desktop-only-flex">
         <h1 style={{ fontSize: '48px', fontWeight: '800', marginBottom: '24px', lineHeight: 1.2 }}>Welcome to IPT One Telecoms.</h1>
-        <p style={{ fontSize: '18px', opacity: 0.9, maxWidth: '500px', lineHeight: 1.6 }}>Portal Access for Authorized Wholesale Partners.</p>
+        <p style={{ fontSize: '18px', opacity: 0.9, maxWidth: '500px', lineHeight: 1.6 }}>Portal Access for Authorized Reseller Partners.</p>
       </div>
 
       {/* Right Pane - Form */}
       <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '24px' }}>
         <div style={{ width: '100%', maxWidth: '440px' }} className="animate-fade-in">
           <div style={{ marginBottom: '40px' }}>
-            <span style={{ fontSize: '22px', fontWeight: '800', letterSpacing: '-0.5px', color: 'var(--brand-primary)' }}>IPT One</span>
-            <span style={{ fontSize: '22px', fontWeight: '300', color: 'var(--text-secondary)', marginLeft: '6px' }}>Telecoms</span>
+            <img src="/logo.png" alt="IPT One Telecoms Logo" style={{ maxWidth: '100%', height: 'auto', maxHeight: '120px' }} />
           </div>
           
           <h2 style={{ fontSize: '32px', fontWeight: '800', marginBottom: '8px' }}>Sign in</h2>
@@ -97,6 +96,10 @@ export default function LoginPage() {
               {loading ? 'Validating...' : 'Sign in to Portal'}
             </button>
           </form>
+
+          <p style={{ marginTop: '24px', textAlign: 'center', color: 'var(--text-secondary)' }}>
+            Don't have an account? <Link href="/signup" style={{ color: 'var(--brand-primary)', textDecoration: 'none', fontWeight: '600' }}>Sign up</Link>
+          </p>
         </div>
       </div>
 

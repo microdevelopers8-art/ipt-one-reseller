@@ -89,9 +89,12 @@ export default function SignupPage() {
         top: 0,
         height: '100vh',
       }} className="desktop-only-flex">
+        <div style={{ position: 'absolute', top: '20px', left: '20px', zIndex: 10 }}>
+          <img src="/logo.png" alt="IPT One Telecoms" style={{ width: '100%', maxWidth: '180px', height: 'auto', objectFit: 'contain' }} />
+        </div>
         <h1 style={{ fontSize: '48px', fontWeight: '800', marginBottom: '24px', lineHeight: 1.2 }}>Partner with Excellence.</h1>
         <p style={{ fontSize: '18px', opacity: 0.9, maxWidth: '500px', lineHeight: 1.6 }}>
-          Join IPT One's reseller network to gain access to wholesale telecommunication solutions, dynamic provisioning, and dedicated support.
+          Join IPT One's reseller network to gain access to reseller telecommunication solutions, dynamic provisioning, and dedicated support.
         </p>
       </div>
 
@@ -101,17 +104,14 @@ export default function SignupPage() {
         display: 'flex',
         alignItems: 'flex-start',
         justifyContent: 'center',
-        padding: '40px 24px',
+        padding: '32px 20px',
         backgroundColor: 'var(--bg-main)',
         overflowY: 'auto'
       }}>
-        <div style={{ width: '100%', maxWidth: '640px' }} className="animate-fade-in">
-          <div className="login-logo" style={{ justifyContent: 'flex-start', marginBottom: '32px' }}>
-            <img src="/logo.png" alt="IPT One Telecoms" style={{ width: '100%', maxWidth: '200px', height: 'auto', objectFit: 'contain' }} />
-          </div>
+        <div style={{ width: '100%', maxWidth: '520px' }} className="animate-fade-in">
           
-          <h2 style={{ fontSize: '32px', fontWeight: '800', marginBottom: '8px' }}>Become a Reseller</h2>
-          <p className="text-secondary" style={{ marginBottom: '32px' }}>Submit your business details below to apply for wholesale access.</p>
+          <h2 style={{ fontSize: '28px', fontWeight: '800', marginBottom: '6px' }}>Become a Reseller</h2>
+          <p className="text-secondary" style={{ marginBottom: '24px', fontSize: '14px' }}>Submit your details to apply for wholesale access.</p>
 
           {error && (
             <div className="bg-danger/10 text-danger p-3 rounded mb-6 text-sm border border-danger/20">
@@ -119,39 +119,34 @@ export default function SignupPage() {
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="flex flex-col gap-6">
-            
+          <form onSubmit={handleSubmit} className="flex flex-col gap-4">
             {/* Account Info */}
             <div>
-              <h3 style={{ fontSize: '14px', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '16px', fontWeight: '800', letterSpacing: '0.5px' }}>Account Credentials</h3>
-              <div className="grid-2">
-                <div className="form-group mb-0">
-                  <label className="form-label">Full Name *</label>
-                  <input type="text" name="name" className="form-input" required value={formData.name} onChange={handleChange} />
-                </div>
-                <div className="form-group mb-0">
-                  <label className="form-label">Login Email *</label>
-                  <input type="email" name="email" className="form-input" required value={formData.email} onChange={handleChange} />
-                </div>
+              <h3 style={{ fontSize: '12px', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '10px', fontWeight: '700', letterSpacing: '0.4px' }}>Login Details</h3>
+              <div className="form-group">
+                <label className="form-label">Full Name *</label>
+                <input type="text" name="name" className="form-input" required value={formData.name} onChange={handleChange} />
               </div>
-              <div className="form-group mb-0 mt-4">
+              <div className="form-group">
+                <label className="form-label">Email *</label>
+                <input type="email" name="email" className="form-input" required value={formData.email} onChange={handleChange} />
+              </div>
+              <div className="form-group mb-0">
                 <label className="form-label">Password *</label>
                 <input type="password" name="password" className="form-input" minLength={6} required value={formData.password} onChange={handleChange} />
               </div>
             </div>
 
-            <div className="divider"></div>
-
             {/* Business Info */}
             <div>
-              <h3 style={{ fontSize: '14px', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '16px', fontWeight: '800', letterSpacing: '0.5px' }}>Business Information</h3>
-              <div className="form-group mb-4">
+              <h3 style={{ fontSize: '12px', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '10px', fontWeight: '700', letterSpacing: '0.4px' }}>Business Details</h3>
+              <div className="form-group">
                 <label className="form-label">Company Name *</label>
                 <input type="text" name="company_name" className="form-input" required value={formData.company_name} onChange={handleChange} />
               </div>
               <div className="grid-2">
                 <div className="form-group mb-0">
-                  <label className="form-label">Company Reg Number</label>
+                  <label className="form-label">Company Reg</label>
                   <input type="text" name="company_registration" className="form-input" value={formData.company_registration} onChange={handleChange} />
                 </div>
                 <div className="form-group mb-0">
@@ -161,56 +156,42 @@ export default function SignupPage() {
               </div>
             </div>
 
-            <div className="divider"></div>
-
             {/* Contact Info */}
             <div>
-              <h3 style={{ fontSize: '14px', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '16px', fontWeight: '800', letterSpacing: '0.5px' }}>Contact Numbers</h3>
-              <div className="grid-3">
+              <h3 style={{ fontSize: '12px', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '10px', fontWeight: '700', letterSpacing: '0.4px' }}>Contact</h3>
+              <div className="form-group">
+                <label className="form-label">Mobile Number *</label>
+                <input type="text" name="mobile" className="form-input" required value={formData.mobile} onChange={handleChange} placeholder="Required" />
+              </div>
+              <div className="grid-2">
                 <div className="form-group mb-0">
-                  <label className="form-label">Mobile Number *</label>
-                  <input type="text" name="mobile" className="form-input" required value={formData.mobile} onChange={handleChange} placeholder="Required" />
-                </div>
-                <div className="form-group mb-0">
-                  <label className="form-label">WhatsApp Number</label>
+                  <label className="form-label">WhatsApp</label>
                   <input type="text" name="whatsapp" className="form-input" value={formData.whatsapp} onChange={handleChange} />
                 </div>
                 <div className="form-group mb-0">
-                  <label className="form-label">Landline Phone</label>
+                  <label className="form-label">Landline</label>
                   <input type="text" name="phone" className="form-input" value={formData.phone} onChange={handleChange} />
                 </div>
               </div>
             </div>
 
-            <div className="divider"></div>
-
             {/* Physical Address */}
-            <div>
-              <h3 style={{ fontSize: '14px', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '16px', fontWeight: '800', letterSpacing: '0.5px' }}>Physical Address</h3>
-              <div className="grid-2 mb-4">
-                <div className="form-group mb-0">
-                  <label className="form-label">Unit Number</label>
-                  <input type="text" name="unit_number" className="form-input" value={formData.unit_number} onChange={handleChange} />
-                </div>
-                <div className="form-group mb-0">
-                  <label className="form-label">Building / Complex</label>
-                  <input type="text" name="building" className="form-input" value={formData.building} onChange={handleChange} />
-                </div>
-              </div>
-              <div className="grid-2 mb-4">
-                <div className="form-group mb-0">
-                  <label className="form-label">Street Number & Name</label>
+            <div style={{ borderTop: '1px solid var(--border-subtle)', paddingTop: '16px' }}>
+              <h3 style={{ fontSize: '12px', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '10px', fontWeight: '700', letterSpacing: '0.4px' }}>Address (Optional)</h3>
+              <div className="grid-2">
+                <div className="form-group mb-2">
+                  <label className="form-label">Street</label>
                   <input type="text" name="street_number" className="form-input" value={formData.street_number} onChange={handleChange} />
                 </div>
-                <div className="form-group mb-0">
-                  <label className="form-label">Suburb</label>
-                  <input type="text" name="suburb" className="form-input" value={formData.suburb} onChange={handleChange} />
+                <div className="form-group mb-2">
+                  <label className="form-label">City</label>
+                  <input type="text" name="city" className="form-input" value={formData.city} onChange={handleChange} />
                 </div>
               </div>
               <div className="grid-2">
                 <div className="form-group mb-0">
-                  <label className="form-label">City / Town</label>
-                  <input type="text" name="city" className="form-input" value={formData.city} onChange={handleChange} />
+                  <label className="form-label">Suburb</label>
+                  <input type="text" name="suburb" className="form-input" value={formData.suburb} onChange={handleChange} />
                 </div>
                 <div className="form-group mb-0">
                   <label className="form-label">Province</label>
@@ -232,16 +213,16 @@ export default function SignupPage() {
 
             <button
               type="submit"
-              className="btn btn-primary btn-lg w-full mt-4"
+              className="btn btn-primary btn-lg w-full"
               disabled={loading}
-              style={{ padding: '16px', fontSize: '16px' }}
+              style={{ padding: '12px 16px', fontSize: '16px', marginTop: '12px' }}
             >
-              {loading ? 'Submitting Application...' : 'Submit Reseller Application'}
+              {loading ? 'Submitting...' : 'Apply Now'}
             </button>
           </form>
 
-          <p style={{ marginTop: '32px', textAlign: 'center', color: 'var(--text-muted)' }}>
-            Already have an account? <Link href="/login" style={{ color: 'var(--brand-secondary)', textDecoration: 'none', fontWeight: '600' }}>Sign in here</Link>
+          <p style={{ marginTop: '20px', textAlign: 'center', color: 'var(--text-muted)', fontSize: '14px' }}>
+            Have an account? <Link href="/login" style={{ color: 'var(--brand-secondary)', textDecoration: 'none', fontWeight: '600' }}>Sign in</Link>
           </p>
         </div>
       </div>

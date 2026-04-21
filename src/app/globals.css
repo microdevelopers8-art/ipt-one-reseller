@@ -46,7 +46,7 @@
   --catalog-mobile: #EF4444;
 
   /* Spacing */
-  --sidebar-width: 260px;
+  --sidebar-width: 200px;
   --header-height: 64px;
 
   /* Shadows */
@@ -133,11 +133,22 @@ body {
 }
 
 .sidebar-logo {
-  padding: 20px 24px;
+  padding: 32px 24px 32px 24px;
   border-bottom: 1px solid var(--border-subtle);
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 12px;
+  justify-content: center;
+  gap: 0;
+}
+
+.sidebar-logo-img {
+  max-width: 180px;
+  width: 100%;
+  height: auto;
+  max-height: 90px;
+  display: block;
+  margin: 0 auto;
 }
 
 .sidebar-logo-icon {
