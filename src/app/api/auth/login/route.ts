@@ -2,11 +2,9 @@ import { NextRequest, NextResponse } from 'next/server';
 import bcrypt from 'bcryptjs';
 import { query } from '@/lib/db';
 import { signToken } from '@/lib/auth';
-import { initializeDatabase } from '@/lib/init-db';
 
 export async function POST(request: NextRequest) {
   try {
-    await initializeDatabase();
     const { email, password } = await request.json();
 
     if (!email || !password) {

@@ -1,13 +1,9 @@
 import { query } from './db';
 import bcrypt from 'bcryptjs';
-import fs from 'fs';
-import path from 'path';
+import { schemaSql } from './schema-text';
 
 export async function initializeDatabase() {
   try {
-    const schemaPath = path.join(process.cwd(), 'src', 'lib', 'schema.sql');
-    const schemaSql = fs.readFileSync(schemaPath, 'utf-8');
-    
     // Robustly split SQL statements by semicolon
     const statements = schemaSql
       .replace(/--.*$/gm, '') // Remove comments
