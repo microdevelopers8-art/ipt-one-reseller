@@ -203,4 +203,4 @@ CREATE TABLE IF NOT EXISTS support_messages (
   is_admin_reply BOOLEAN DEFAULT false,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
-\`;
+`;
