@@ -58,7 +58,7 @@ export default function LoginPage() {
         justifyContent: 'center',
         padding: '60px',
         backgroundColor: 'var(--brand-primary)',
-        backgroundImage: 'linear-gradient(135deg, rgba(0, 102, 204, 0.9) 0%, rgba(0, 163, 255, 0.8) 100%), url("https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=2070&auto=format&fit=crop")',
+        backgroundImage: 'linear-gradient(135deg, rgba(0, 102, 204, 0.9) 0%, rgba(0, 163, 255, 0.8) 100%), url("https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2070&auto=format&fit=crop")',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         color: '#fff',
