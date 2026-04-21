@@ -20,6 +20,30 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Environment Variables
+
+Create a `.env.local` file in the root directory with the following variables:
+
+```env
+DATABASE_URL=postgresql://your-database-url
+JWT_SECRET=your-jwt-secret-key
+NEXT_PUBLIC_APP_NAME=IPT One Telecoms
+NEXT_PUBLIC_APP_URL=http://localhost:3000
+```
+
+## Deploy on Coolify
+
+1. Push your code to a Git repository (GitHub, GitLab, etc.)
+2. In your Coolify dashboard at `http://102.130.127.191:8000/`, create a new project
+3. Add your Git repository as a source
+4. Coolify will automatically detect the Dockerfile and build the application
+5. Set the following environment variables in Coolify:
+   - `DATABASE_URL`: Your PostgreSQL database URL
+   - `JWT_SECRET`: A secure JWT secret key
+   - `NEXT_PUBLIC_APP_NAME`: "IPT One Telecoms"
+   - `NEXT_PUBLIC_APP_URL`: Your deployment URL
+   - `NODE_ENV`: production
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
