@@ -1,12 +1,18 @@
-import { neon } from '@neondatabase/serverless';
+import { Pool } from '@neondatabase/serverless';
 
-const sql = neon(process.env.DATABASE_URL!);
+const pool = new Pool({ connectionString: process.env.DATABASE_URL });
 
-export default sql;
+export default pool;
 
 export async function query(text: string, params?: any[]) {
-  if (params && params.length > 0) {
-    return sql.query(text, params);
+  try {
+    const start = Date.now();
+    const res = await pool.query(text, params);
+    const duration = Date.now() - start;
+    // Optional: console.log('executed query', { text, duration, rows: res.rowCount });
+    return res.rows;
+  } catch (error) {
+    console.error('Database query error:', error);
+    throw error;
   }
-  return sql.query(text);
 }
